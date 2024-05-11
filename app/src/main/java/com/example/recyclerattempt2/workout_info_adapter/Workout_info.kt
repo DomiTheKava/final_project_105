@@ -1,5 +1,36 @@
 package com.example.recyclerattempt2.workout_info_adapter
 
-data class Workout_info(val name: String, val data: String) {
+import android.os.Parcel
+import android.os.Parcelable
+import android.widget.Button
+
+data class Workout_info(
+    var name: String?,
+    var data: String?, )
+    : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString()
+    ) {
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(name)
+        dest.writeString(data)
+    }
+
+    companion object CREATOR : Parcelable.Creator<Workout_info> {
+        override fun createFromParcel(parcel: Parcel): Workout_info {
+            return Workout_info(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Workout_info?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 }

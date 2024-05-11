@@ -12,6 +12,7 @@ class recyclerViewAdapter(var data: ArrayList<dataClass>,
     class ViewHolderClass(view: View, clickAtPosition: (Int) -> Unit): RecyclerView.ViewHolder(view) {
         val one = view.findViewById<TextView>(R.id.textView)
         val two = view.findViewById<TextView>(R.id.textView2)
+//        val moreDataHolder =
 
         init {
             itemView.setOnClickListener {
@@ -26,7 +27,6 @@ class recyclerViewAdapter(var data: ArrayList<dataClass>,
         {
             clickListener(data[it])
         }
-
 
 
         return view

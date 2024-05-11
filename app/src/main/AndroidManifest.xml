@@ -13,6 +13,11 @@
         android:theme="@style/Theme.RecyclerAttempt2"
         tools:targetApi="31">
         <activity
+            android:name=".workout_add"
+            android:exported="false"
+            android:label="@string/title_activity_workout_add"
+            android:theme="@style/Theme.RecyclerAttempt2" />
+        <activity
             android:name=".workout_details"
             android:exported="false" />
         <activity
