@@ -9,13 +9,12 @@
         android:id="@+id/txtEntry_workout_name"
         android:layout_width="269dp"
         android:layout_height="69dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="256dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Workout Name"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,10 +22,12 @@
         android:id="@+id/btn_workout_create"
         android:layout_width="145dp"
         android:layout_height="58dp"
+        android:backgroundTint="#51C300"
+        android:textColor="#D5D5D5"
         android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEntry_workout_name"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.035" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
         android:id="@+id/workout_name"
@@ -21,27 +22,39 @@
 
     <TextView
         android:id="@+id/current_record"
-        android:layout_width="188dp"
-        android:layout_height="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
+        android:gravity="center"
         android:text="0"
         android:textAlignment="center"
         android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/workout_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workout_name" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="8dp"
+        android:text="PR:"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/current_record"
         app:layout_constraintTop_toBottomOf="@+id/workout_name" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/more_details"
-        android:layout_width="407dp"
-        android:layout_height="395dp"
-        android:layout_marginBottom="64dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="416dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/current_record"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintTop_toBottomOf="@+id/delete_workout"
+        app:layout_constraintVertical_bias="0.23" />
 
     <Button
         android:id="@+id/delete_workout"
@@ -49,14 +62,15 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#C30000"
         android:text="Delete Workout"
+        android:textColor="#DCDCDC"
         android:textColorHighlight="#FFFFFF"
         android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269" />
+        app:layout_constraintTop_toBottomOf="@+id/current_record"
+        app:layout_constraintVertical_bias="0.013"/>
 
     <Button
         android:id="@+id/add_data"
@@ -64,6 +78,7 @@
         android:layout_height="47dp"
         android:backgroundTint="#51C300"
         android:text="Add Data"
+        android:textColor="#D5D5D5"
         android:textColorHighlight="#FFFFFF"
         android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,4 +87,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/more_details"
         app:layout_constraintVertical_bias="0.111" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="128dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
+        android:dropDownWidth="match_parent"
+        android:entries="@array/spinner_workout_types"
+        android:spinnerMode="dropdown"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/current_record"
+        app:layout_constraintTop_toBottomOf="@+id/workout_name" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

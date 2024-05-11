@@ -6,6 +6,16 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string-array name="spinner_workout_types">
+        <item>category</item>
+        <item>reps</item>
+        <item>lb</item>
+        <item>sets</item>
+        <item>minutes</item>
+        <item>seconds</item>
+        <item>miles</item>
+
+    </string-array>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

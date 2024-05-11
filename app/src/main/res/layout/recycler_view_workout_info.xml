@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="380dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -10,31 +10,47 @@
     app:layout_constraintTop_toTopOf="parent"
     android:layout_marginTop="10dp"
     app:cardCornerRadius="30dp"
-    app:cardElevation="2dp"
-    android:layout_marginLeft="15dp">
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/date_added"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="null"
+            android:textColor="#9B9A9A"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/value"
+            app:layout_constraintVertical_bias="0.095" />
 
         <Button
             android:id="@+id/delete"
             android:layout_width="88dp"
             android:layout_height="45dp"
-            android:backgroundTint="#B90000"
+            android:backgroundTint="#C30000"
+            android:textColor="#DCDCDC"
             android:text="delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.987"
+            app:layout_constraintHorizontal_bias="0.973"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.666" />
+            app:layout_constraintVertical_bias="0.018" />
 
         <EditText
             android:id="@+id/value"
-            android:layout_width="88dp"
-            android:layout_height="44dp"
+            android:layout_width="134dp"
+            android:layout_height="47dp"
             android:layout_marginEnd="12dp"
             android:ems="10"
             android:hint="value"
@@ -44,21 +60,19 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.027" />
 
         <EditText
             android:id="@+id/name"
-            android:layout_width="153dp"
-            android:layout_height="46dp"
+            android:layout_width="339dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="48dp"
             android:ems="10"
-            android:hint="name"
+            android:hint="notes"
             android:inputType="text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/value"
-            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

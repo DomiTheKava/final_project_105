@@ -12,6 +12,11 @@ import com.example.recyclerattempt2.fragment_add_workout.add_workout_fragment
 import com.example.recyclerattempt2.workout_info_adapter.Workout_info
 import com.example.recyclerattempt2.workout_info_adapter.workout_info_adapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.FileInputStream
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val rv = findViewById<RecyclerView>(R.id.rv)
-        rv.layoutManager = LinearLayoutManager(this)
+        val lm = LinearLayoutManager(this)
+//        lm.reverseLayout = true
+//        lm.stackFromEnd = true
+        rv.layoutManager = lm
         rv.hasFixedSize()
 
 //        val detail_workout = findViewById<View>(R.layout.detailed_workout)
@@ -55,6 +63,7 @@ class MainActivity : AppCompatActivity() {
 
             intent.putExtra("workout_name", it.one)
             intent.putExtra("record", it.two)
+            intent.putExtra("type", it.type)
             intent.putParcelableArrayListExtra("extras", it.recyclerViewItems)
 
             startActivityForResult(intent, 2)
@@ -75,6 +84,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @Deprecated("Deprecated in Java")
     @SuppressLint("NotifyDataSetChanged")
     override fun onActivityResult(requestCode: Int, resultCode: Int, dataIntent: Intent?) {
 
@@ -99,8 +109,15 @@ class MainActivity : AppCompatActivity() {
             val workOutName = dataIntent?.getStringExtra("name")
             val deleteWorkOut = dataIntent?.getStringExtra("delete")
             val pr = dataIntent?.getStringExtra("pr")
+            val type = dataIntent?.getStringExtra("type")
 
             val item = data.find { it.one == workOutName }
+
+            if (item != null) {
+                if (type != null) {
+                    item.type = type
+                }
+            }
 
             if (pr != null) {
                 if (item != null) {
@@ -129,6 +146,48 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    override fun onStop() { // write data
+        super.onStop()
+
+        try {
+            val fileOutputStream: FileOutputStream = openFileOutput("workoutData.txt", MODE_PRIVATE)
+            val objectOutputStream = ObjectOutputStream(fileOutputStream)
+
+            objectOutputStream.writeObject(data)
+
+            objectOutputStream.close()
+            fileOutputStream.close()
+        } catch (e: FileNotFoundException) {
+            data = ArrayList<dataClass>()
+
+        }
+
+    }
+    override fun onStart() {
+        super.onStart()
+
+        try {
+            val fileInputStream: FileInputStream = openFileInput("workoutData.txt")
+            val objectInputStream = ObjectInputStream(fileInputStream)
+
+            data.clear()
+
+            val collected_data = objectInputStream.readObject() as ArrayList<dataClass>
+
+            data += collected_data
+
+            data.sortBy { it.one }
+
+//            Toast.makeText(this, data.toString(), Toast.LENGTH_LONG).show()
+
+            objectInputStream.close()
+            fileInputStream.close()
+        } catch (e: FileNotFoundException) {
+            data = ArrayList<dataClass>()
+
+        }
     }
 
 }

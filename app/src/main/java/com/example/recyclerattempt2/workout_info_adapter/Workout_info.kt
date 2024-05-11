@@ -2,13 +2,17 @@ package com.example.recyclerattempt2.workout_info_adapter
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.widget.Button
+import java.io.Serializable
+import java.time.LocalDate
 
 data class Workout_info(
     var name: String?,
-    var data: String?, )
-    : Parcelable {
+    var data: String?,
+    val date: String?)
+//    val type: String? = "0")
+    : Parcelable, Serializable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readString()
     ) {
@@ -21,6 +25,8 @@ data class Workout_info(
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(name)
         dest.writeString(data)
+        dest.writeString(date)
+//        dest.writeString(type)
     }
 
     companion object CREATOR : Parcelable.Creator<Workout_info> {
